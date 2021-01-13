@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Employee Registeration Form</title>
+    <meta name="description" content="JavaScript Exam with Form Validation" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet' href='../css/style.css' type='text/css' />
+    <script type="text/javascript" src="http://code.jQuery.com/jQuery-1.7.2.min.js"></script> 
+    <script src="../js/validation.js"></script>
+    <script type="text/javascript" src="../js/functions.js"></script>
+    
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-end banner">
+      <div class="col-4">
+        <form class="search">
+          <input class="form-control mb-4" id="tableSearch" type="text2" placeholder="Search for Candidate">
+        </form> 
+      </div>
+      <div class="col-2">
+        <input type="button2" data-toggle="modal" data-target="#myModal" value="Register" />
+      </div>
+      <div class="col-2">
+        <input type="button2" onclick="window.open('https://www.google.com','_blank');" value="Login" />
+      </div>
+    </div>
+  
+    <h2>I Tech Software Solutions Pvt. Ltd.</h2>
+  
+  <table id="tblList" class="table table-bordered table-hover">
+  </table>
+
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <h1> I-Tech Registration</h1>
+        <form name='registration' id="frmCadastre" onSubmit="return formValidation();">
+        <div class="container">
+            <h3>Personal Information</h3>
+            <div class="row">
+                <div class="col-2">
+                <label for="title">Title</label><br>
+                <input type="text" id="title" name="title" placeholder="Mr/Ms/Mrs" required />
+                </div>
+                <div class="col-5">
+                <label for="fname">First Name</label><br>
+                <input type="text" id="fname" name="fname" placeholder="Manohar" onblur="fname_validation()" required />
+                </div>
+                <div class="col-5">
+                <label for="lname">Last Name</label><br>
+                <input type="text" id="lname" name="lname" placeholder="Manohar" onblur="allLetter()" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                <label for="email">Email</label><br>
+                <input type="text" id="email" name="email" placeholder="xyz@xyz.com" onblur="ValidateEmail()"  required />
+                </div>
+                <div class="col-3">
+                <label for="dob">Date of Birth</label><br>
+                <input type="date" id="dob" name="dob" onblur=""  required />
+                </div>
+                <div class="col-2">
+                <label for="phone">Phone Number:</label><br>
+                <input type="text" id="phone" name="phone"  onblur="ValidatePhone()"  required />
+                </div>
+                <div class="col-4">
+                <p>Gender / Sex</p>
+                <input type="radio" id="gender1" name="gender" value="Male">
+                <label for="male">Male</label>
+                <input type="radio" id="gender2" name="gender" value="Female">
+                <label for="female">Female</label>
+                <input type="radio" id="gender3" name="gender" value="Transgender">
+                <label for="transgender">Transgender</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label for="address">Address</label><br>
+                    <input type="text" id="address" name="address" placeholder="1234 Main St" onblur="alphanumeric()"  required />
+                </div>
+                <div class="col-3">
+                    <label for="address2">Address2</label><br>
+                    <input type="text" id="address2" name="address2" placeholder="Apartment, Studio or floor" onblur="alphanumeric()"  required />
+                </div>
+                <div class="col-2">
+                    <label for="city">City</label><br>
+                    <input type="text" id="city" name="city" onblur=""  required />
+                </div>
+                <div class="col-2">
+                    <label for="state">State:</label><br>
+                    <select id="state" name="State">
+                        <option selected="" value="Default">Choose</option>
+                        <option value="DL">Delhi</option>
+                        <option value="UP">Uttar Pradesh</option>
+                        <option value="HR">Haryana</option>
+                        <option value="PB">Punjab</option>
+                        <option value="RJ">Rajasthan</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <label for="zip">ZIP Code:</label><br>
+                    <input type="text" id="zip" name="zip" onblur="allnumeric()"  required />
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h3 class="heading">Educational Qualification</h3>
+            <div class="row">
+                <div class="col">
+                <label for="college">College Name</label><br>
+                <input type="text" id="college" name="college" placeholder="KITS" onblur=""  required />
+                </div>
+                <div class="col">
+                <label for="univ">University Name</label><br>
+                <input type="text" id="univ" name="univ" placeholder="JNTUH" onblur=""  required />
+                </div>
+                <div class="col">
+                <label for="place">Place</label><br>
+                <input type="text" id="place" name="place" placeholder="Manohar" onblur=""  required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="marks">Percentage % </label><br>
+                    <input type="number" id="marks" name="marks" onblur=""  required />
+                </div>
+
+                <div class="col">
+                    <label for="back">Backlogs</label><br>
+                    <input type="number" id="back" name="back" onblur=""  required />
+                </div>
+
+                <div class="col">
+                    <label for="spcl">Specialization</label><br>
+                    <input type="text" id="spcl" name="spcl" onblur=""  required />
+                </div>
+               
+                <div class="col">
+                    <label for="major">Majors / Subjects</label><br>
+                    <input type="text" id="major" name="major" onblur=""  required />
+                </div>
+
+                <div class="col">
+                    <label for="year">Year of Passing</label><br>
+                    <input type="text" name ="datepicker" id="datepicker" onblur=""  required />
+                </div>
+
+                <div class="col">
+                    <p>Any Work Exp?</p>
+                    <input type="radio" id="exp1" name="exp" value="Yes">
+                    <label for="Yes">Yes</label>
+                    <input type="radio" id="exp2" name="exp" value="No">
+                    <label for="No">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+          <input id="btnSave" type="submit" name="submit" value="Submit" />     
+        </div>                                         
+    </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+    
+</body>
+</html> 
+<script>
+    // Filter table
+    
+    $(document).ready(function(){
+      $("#tableSearch").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+</script>
+

@@ -1,0 +1,124 @@
+h1{
+    border: 1px solid   #000000;
+    background-color:#981ab1;
+    color: #ffffff;
+    text-align: center;
+    width: 1140px;
+    margin: 100px;
+    padding: 20px;
+}
+
+h3{
+    width: 267px;
+    margin-top: -20px;
+    margin-left: 5px;
+    background: white;
+}
+
+h2{
+  color: #ff9100;
+  text-align: center;
+  margin: 30px;
+}
+
+.table{
+  color: #981ab1;
+  
+}
+
+.table-bordered td, .table-bordered th, .table thead th{
+  border: 1px solid #ff9100;
+}
+    
+.container{
+    border: 1px solid #000000;
+    margin: 100px;
+    width: 100%;
+}
+
+input[type=text], input[type=date], input[type="number"], select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 20px;
+    border: 1px solid #000000;
+  }
+
+  input[type=text2] {
+    background-color: #981ab1;
+    color: #ffffff;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ffffff;
+  }
+
+input[type=button], input[type=submit]{
+    background-color: #4CAF50;
+    border-radius: 20px;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 150px;
+}
+
+input[type=button2], input[type=submit2]{
+  background-color: #981ab1;
+  color: #ffffff;
+  border: 0px;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.heading{
+    width: 318px;
+    margin-top: -20px;
+    margin-left: 5px;
+    background: white;
+}
+
+.row.banner {
+  background: #981ab1;
+}
+
+img{
+    height: 20px;
+    width: 20px;
+}
+.modal-dialog {
+  width: fit-content;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content {
+  height: auto;
+  min-height: 100%;
+  border-radius: 0;
+  width: fit-content;
+}
+
+  .close-btn {
+    float: right; 
+    color: lightgray; 
+    font-size: 24px;  
+    font-weight: bold;
+  }
+  .close-btn:hover {
+    color: darkgray;
+  }
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
