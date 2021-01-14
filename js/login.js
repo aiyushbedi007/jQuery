@@ -1,25 +1,54 @@
-var json='[    {            "username": "user1",            "password": "password1"    },    {        "username":"user2",        "password" : "password2"    }]';
+$(document).ready(function () {
+    //event handler for submit button
+    $("#btnLogin").click(function () {
+        //collect userName and password entered by users
+        var userName = $("#uname").val();
+        var password = $("#psw").val();
 
-var $json=$.parseJSON(json);
+        //call the authenticate function
+        authenticate(userName, password);
+    });
+});
 
-var a="user2";
-    var b="password2";
-    var checkval = false;
 
-$.each($json,function(i,obj)
+
+var checkval = false;
+
+function authenticate(userName, password) {
+    var name;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {       
+        var $json=$.parseJSON(this.responseText);
+
+        $.each($json,function(i,obj)
         {
-            if(obj.username == a && obj.password == b)
+            if(obj.loginName == userName && obj.password == password)
             {
-                checkval = true; 
+                checkval = true;
+                name = obj.firstName;
                 return false;
             }
         });
 
-if(checkval == true)
-        {
-            alert("login correct");
-        }
-    else
-        {
-            alert("!!!!!-----Incorrect login Details-----!!!!!");
-        }
+        if(checkval == true)
+                {
+                    myFunction(name)
+                }
+            else
+                {
+                    alert("!!!!!-----Incorrect login Details-----!!!!!");
+                }
+    
+    }
+    };
+    xmlhttp.open("GET", "../login.json", true);
+    xmlhttp.send();
+ }
+
+ function myFunction(name) {
+    var x = document.getElementById("body");
+    document.getElementById("demo").innerHTML = `Welcome ${name}`
+    x.style.display = "block";
+    
+  }

@@ -1,23 +1,3 @@
-
-function formValidation()
-{
-   
-    var ustate = document.registration.state; 
-
-    if(stateselect(ustate))
-    {
-        return true 
-    }
-
-    return false;
-} 
-
-function title_validation(title)
-{   
-    var title = document.registration.title;
-    return true;
-}
-
 function fname_validation(fname)
 {
     var fname = document.registration.fname;
@@ -35,7 +15,7 @@ function fname_validation(fname)
 }
 function allLetter(lname)
 { 
-    var lname = document.registration.username;
+    var lname = document.registration.lname;
     var letters = /^[A-Za-z]+$/;
     if(lname.value.match(letters))
     {
@@ -80,51 +60,6 @@ function ValidatePhone(phone)
         return false;
     }
 }
-
-function alphanumeric(uadd)
-{ 
-    var uadd = document.registration.address;
-    return true;
-}
-
-function stateselect(ustate)
-{
-    if(ustate.value == "Default")
-    {
-        alert('Select your state from the list');
-        ustate.focus();
-        return false;
-    }
-    else
-    {
-        return true;
-    }
-}
-function allnumeric(uzip)
-{ 
-    var uzip = document.registration.zip;
-    var numbers = /^[0-9]+$/;
-    if(uzip.value.match(numbers))
-    {
-        return true;
-    }
-    else
-    {
-        alert('ZIP code must have numeric characters only');
-        uzip.focus();
-        return false;
-    }
-}
-
-  // Get the modal
-  var modal = document.getElementById('id01');
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
 
   $(document).ready(function(){
     $("#tableSearch").on("keyup", function() {
