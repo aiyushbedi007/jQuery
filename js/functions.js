@@ -7,17 +7,31 @@ $(function(){
         tbClients = [];
         }
     List();
+
+    var login = localStorage.getItem("login");//Retrieve the stored data 
+    login = JSON.parse(login); //Converts string to object'
+    var x = document.getElementById("body");
+    if (login == null){   
+        x.style.display = "none";
+    }
+    else {
+        x.style.display = "block";
+    }
     
 
-    $("#frmCadastre").bind("submit",function(){
-    if(operation == "A")
-        return Add();
-    else
-        return Edit();		
+    $("#frmCadastre").bind("submit",function(event){
+        $('#myModal').modal('hide');
+        event.preventDefault();	
+        if(operation == "A"){
+            return Add();
+        }   
+        else{
+            return Edit();
+        }   	
+    
     }); 
 
-    $(".btnEdit").bind("click", function(){
-    
+    $("body").on("click",".btnEdit", function(){    
     operation = "E";
     selected_index = parseInt($(this).attr("alt").replace("Edit", ""));
     var cli = JSON.parse(tbClients[selected_index]);
@@ -29,7 +43,7 @@ $(function(){
     $("#title").attr("readonly","readonly");
     }); 
 
-    $(".btnDelete").bind("click", function(){
+    $("body").on("click",".btnDelete", function(){
     selected_index = parseInt($(this).attr("alt").replace("Delete", ""));
     Delete();
     List();
@@ -46,6 +60,12 @@ $(function(){
         });
         tbClients.push(client);
         localStorage.setItem("tbClients", JSON.stringify(tbClients));
+        List();
+
+        $( '#frmCadastre' ).each(function(){
+            this.reset();
+        });
+
         return true;
     } 
 
@@ -61,6 +81,7 @@ $(function(){
         });//Alter the selected item on the table
     localStorage.setItem("tbClients", JSON.stringify(tbClients));
     operation = "A"; //Return to default value
+    List();
     return true;
     } 
 
@@ -90,7 +111,7 @@ $(function(){
     "	<th>Mobile</th>"+
     "	<th>Email</th>"+
     "	<th>City</th>"+
-    "	<th colspan='2'>Edit | Delete </th>"+
+    "	<th class='admin'>Edit | Delete </th>"+
     "	</tr>"+
     "</thead>"+
     "<tbody id='myTable'>"+
@@ -103,11 +124,12 @@ $(function(){
         "	<td>"+count+"</td>" + 
         "	<td>"+cli.fname+"</td>" + 
         "	<td>"+cli.lname+"</td>" + 
-        "	<td>"+cli.phone+"</td>" + 
+        "	<td>"+cli.phone+"</td>" +  
         "	<td>"+cli.email+"</td>" + 
         "	<td>"+cli.city+"</td>" + 
-        "	<td><img src='../img/edit.png' alt='Edit"+i+"' class='btnEdit' data-toggle='modal' data-target='#myModal'/></td>"+
-        "	<td><img src='../img/delete.png' alt='Delete"+i+"' class='btnDelete'/></td>"+
+        // "	<td class='admin'><img src='../img/edit.png' alt='Edit"+i+"' class='btnEdit' data-toggle='modal' data-target='#myModal'/></td>"+
+        "   <td class='admin'><button id='Edit' alt='Edit"+i+"' type='button' class='btnEdit' data-toggle='modal' data-target='#myModal'> <i class='far fa-edit'></i></button> &nbsp; <button id='Delete' alt='Delete"+i+"' type='button' class='btnDelete'> <i class='fas fa-times'></i></button></td>"+
+        // "   <td class='admin'><button id='Delete' type='button' class='btnDelete'> <i class='fa fa-user'></i></button></td>"+
         "</tr>");
     count=count+1;
     }

@@ -6,21 +6,23 @@
     <title>Contacts Data</title>
     <meta name="description" content="jQuery Exam with Form Validation" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.jQuery.com/jQuery-2.2.4.min.js"></script> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel='stylesheet' href='../css/style.css' type='text/css' />
-    <script type="text/javascript" src="http://code.jQuery.com/jQuery-1.7.2.min.js"></script> 
     <script src="../js/validation.js"></script>
     <script src="../js/login.js"></script>
     <script type="text/javascript" src="../js/functions.js"></script>
+
     
 </head>
 <body>
   <div class="container">
     <div class="row banner justify-content-start">
-      <div class="col-2">
-        <button type="button" class="btn btn-default" onclick="document.getElementById('body').style.display='none'" >
+      <div class="col-2 btn2">
+        <button type="button" class="btn btn-default btn2" onclick="document.getElementById('body').style.display='none'" >
           <i class='fas fa-home'></i> Home 
         </button>
       </div>
@@ -31,21 +33,34 @@
       </div>
       <div class="col-2">
         <i class='fa fa-envelope' style="color: #fff;"></i>
-        <input type="button2" data-toggle="modal" data-target="#myModal" value="Contact" />
+        <input type="button" class="btn btn-default"  data-toggle="modal"  id="check" value="Contact"  />
       </div>
       <div class="col-2">
         <button type="button" class="btn btn-default" onclick="document.getElementById('id01').style.display='block'">
           <i class='fa fa-user'></i> Login</button>
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-default" id="logout">
+          <i class='fa fa-user'></i> Logout</button>
       </div>
     </div>
   </div>
   <div class="container" id="body">
   
     <h2 id="demo"></h2> 
+    <div class="row justify-content-start">
+      <div class="col-3">
+        <form class="search">
+          <input class="form-control mb-4" id="tableSearch" type="text" placeholder="Search..." />
+        </form>
+      </div>
+      <div class="col">
+        <i class="fas fa-search fsearch"></i>
+      </div>
+    </div>
+    
 
-    <form class="search">
-      <input class="form-control mb-4" id="tableSearch" type="text" placeholder="Search..." />
-    </form> 
+    
   
   <table id="tblList" class="table table-bordered table-striped table-hover">
   </table>
@@ -145,21 +160,4 @@
     
 </body>
 </html> 
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-var modal2 = document.getElementById('myModal');
 
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-if (event.target == modal) {
-  modal.style.display = "none";
-}
-
-if (event.target == modal2) {
-  modal2.style.display = "none";
-}
-
-  }
-</script>
