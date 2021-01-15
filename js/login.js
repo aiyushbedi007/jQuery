@@ -30,13 +30,13 @@ $(document).ready(function () {
         var userName = $("#uname").val();
         var password = $("#psw").val();
 
-        //call the authenticate function
-        authenticate(userName, password);
+        //call the user Authenticate function
+        userAuthenticate(userName, password);
         var modal = document.getElementById('id01');
         modal.style.display = "none";
     });
 
-function authenticate(userName, password) {
+function userAuthenticate(userName, password) {
     var name;
     var role;
     $.getJSON("../login.json", function(data){
@@ -45,13 +45,20 @@ function authenticate(userName, password) {
 
         $.each($json,function(i,obj)
         {
-            if(obj.loginName == userName && obj.password == password)
+            if(obj.loginName === userName && obj.password === password)
             {
-                checkval = true;
-                localStorage.setItem("login", JSON.stringify(obj));
-                name = obj.firstName;
-                role=obj.role;
-                return false;
+                if (obj.status === 'active'){
+                    checkval = true;
+                    localStorage.setItem("login", JSON.stringify(obj));
+                    name = obj.firstName;
+                    role=obj.role;
+                    return false;
+                }
+                else {
+                    alert("!!!!!-----User Account is Deactive-----!!!!!");
+                }
+
+               
             }
             else{
                 checkval =false;

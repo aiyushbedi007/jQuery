@@ -1,4 +1,4 @@
-function fname_validation(fname)
+function fnameValidation(fname)
 {
     var fname = document.registration.fname;
     var letters = /^[A-Za-z]+$/;
@@ -29,7 +29,7 @@ function allLetter(lname)
     }
 }
 
-function ValidateEmail(uemail)
+function validateEmail(uemail)
 {
     var uemail = document.registration.email;
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -45,7 +45,7 @@ function ValidateEmail(uemail)
     }
 }
 
-function ValidatePhone(phone)
+function validatePhone(phone)
 { 
     var phone = document.registration.phone;
     var numbers = /^[0-9]+$/;

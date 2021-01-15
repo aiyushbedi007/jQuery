@@ -40,7 +40,6 @@ $(function(){
     $("#email").val(cli.email);
     $("#phone").val(cli.phone);
     $("#city").val(cli.city);
-    $("#title").attr("readonly","readonly");
     }); 
 
     $("body").on("click",".btnDelete", function(){
@@ -102,35 +101,33 @@ $(function(){
             });
           });		
     $("#tblList").html("");
-    $("#tblList").html(
-    "<thead>"+
-    "	<tr>"+
-    "	<th>S.No</th>"+
-    "	<th>First Name</th>"+
-    "	<th>Last Name</th>"+
-    "	<th>Mobile</th>"+
-    "	<th>Email</th>"+
-    "	<th>City</th>"+
-    "	<th class='admin'>Edit | Delete </th>"+
-    "	</tr>"+
-    "</thead>"+
-    "<tbody id='myTable'>"+
-    "</tbody>"
+    $("#tblList").html(`
+     <thead>  
+     	<tr>  
+     	<th>S.No</th>  
+     	<th>First Name</th>  
+     	<th>Last Name</th>  
+     	<th>Mobile</th>  
+     	<th>Email</th>  
+    	<th>City</th>  
+    	<th class='admin'>Edit | Delete </th>  
+    	</tr>  
+    </thead>  
+    <tbody id='myTable'>  
+    </tbody>`
     );
     var count = 1;
     for(var i in tbClients){
     var cli = JSON.parse(tbClients[i]);
-        $("#tblList tbody").append("<tr>"+
-        "	<td>"+count+"</td>" + 
-        "	<td>"+cli.fname+"</td>" + 
-        "	<td>"+cli.lname+"</td>" + 
-        "	<td>"+cli.phone+"</td>" +  
-        "	<td>"+cli.email+"</td>" + 
-        "	<td>"+cli.city+"</td>" + 
-        // "	<td class='admin'><img src='../img/edit.png' alt='Edit"+i+"' class='btnEdit' data-toggle='modal' data-target='#myModal'/></td>"+
-        "   <td class='admin'><button id='Edit' alt='Edit"+i+"' type='button' class='btnEdit' data-toggle='modal' data-target='#myModal'> <i class='far fa-edit'></i></button> &nbsp; <button id='Delete' alt='Delete"+i+"' type='button' class='btnDelete'> <i class='fas fa-times'></i></button></td>"+
-        // "   <td class='admin'><button id='Delete' type='button' class='btnDelete'> <i class='fa fa-user'></i></button></td>"+
-        "</tr>");
+        $("#tblList tbody").append(`<tr>  
+         	<td>  ${count}  </td>    
+         	<td>  ${cli.fname}  </td>    
+         	<td>  ${cli.lname}  </td>    
+         	<td>  ${cli.phone}  </td>     
+         	<td>  ${cli.email}  </td>    
+         	<td>  ${cli.city}  </td>    
+            <td class='admin'><button id='Edit' alt='Edit"+i+"' type='button' class='btnEdit' data-toggle='modal' data-target='#myModal'> <i class='far fa-edit'></i></button> &nbsp; <button id='Delete' alt='Delete"+i+"' type='button' class='btnDelete'> <i class='fas fa-times'></i></button></td>
+        </tr>`);
     count=count+1;
     }
     } 
