@@ -9,7 +9,7 @@ $(function(){
     List();
 
     var login = localStorage.getItem("login");//Retrieve the stored data 
-    login = JSON.parse(login); //Converts string to object'
+    login = JSON.parse(login); //Converts string to object
     var x = document.getElementById("body");
     if (login == null){   
         x.style.display = "none";
@@ -22,7 +22,7 @@ $(function(){
     $("#frmCadastre").bind("submit",function(event){
         $('#myModal').modal('hide');
         event.preventDefault();	
-        if(operation == "A"){
+        if(operation === "A"){
             return Add();
         }   
         else{
@@ -47,9 +47,9 @@ $(function(){
     Delete();
     List();
     });
-    
+
+    //Function to Add new Contact in Local Storage
     function Add(){
-   
         var client = JSON.stringify({
         fname       : $("#fname").val(),
         lname       : $("#lname").val(),
@@ -58,17 +58,15 @@ $(function(){
         city        : $("#city").val(),
         });
         tbClients.push(client);
-        localStorage.setItem("tbClients", JSON.stringify(tbClients));
+        localStorage.setItem("tbClients", JSON.stringify(tbClients)); //Store Contacts in Local Storage
         List();
-
-        $( '#frmCadastre' ).each(function(){
+        $( '#frmCadastre' ).each(function(){ //Reset Form after Submit
             this.reset();
         });
-
         return true;
     } 
 
-
+    //Function to Edit a Contact and upadate Local Storage
     function Edit(){
 
         tbClients[selected_index] = JSON.stringify({
@@ -84,13 +82,13 @@ $(function(){
     return true;
     } 
 
-
+    //Function to Delete a Contact from Local Storage
     function Delete(){
     tbClients.splice(selected_index, 1);
     localStorage.setItem("tbClients", JSON.stringify(tbClients));
     } 
 
-
+    //Function to List all Contact in Local Storage to Table
     function List(){
     $(document).ready(function(){
         $("#tableSearch").on("keyup", function() {

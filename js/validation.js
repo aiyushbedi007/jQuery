@@ -1,3 +1,4 @@
+//Function to Validate First Name
 function fnameValidation(fname)
 {
     var fname = document.registration.fname;
@@ -13,6 +14,8 @@ function fnameValidation(fname)
         return false;
     }
 }
+
+//Function to Validate Last Name
 function allLetter(lname)
 { 
     var lname = document.registration.lname;
@@ -29,6 +32,7 @@ function allLetter(lname)
     }
 }
 
+//Function to Validate Email Id
 function validateEmail(uemail)
 {
     var uemail = document.registration.email;
@@ -45,6 +49,7 @@ function validateEmail(uemail)
     }
 }
 
+//Function to Validate Phone Number
 function validatePhone(phone)
 { 
     var phone = document.registration.phone;
@@ -61,6 +66,7 @@ function validatePhone(phone)
     }
 }
 
+//Dynamic Search in table columns
   $(document).ready(function(){
     $("#tableSearch").on("keyup", function() {
       var value = $(this).val().toLowerCase();

@@ -5,19 +5,18 @@ var checkval=false;
 $("#check").bind("click",function(event){
     event.preventDefault();
     var login = localStorage.getItem("login");//Retrieve the stored data 
-    login = JSON.parse(login); //Converts string to objec
+    login = JSON.parse(login); //Converts string to object
     if (login == null){
         alert('User must login for displaying contacts');
     }
     else{
-        //alert("Login Successful")
-        $('#myModal').modal('show'); 
+        $('#myModal').modal('show'); //Show Modal on Successful Login
 
     }
 });
 
 $("#logout").on("click", function(){ 
-    localStorage.removeItem("login");
+    localStorage.removeItem("login"); //Remove login data from Local Storage and Reset the page
     location.reload();    
 });
     
@@ -26,7 +25,7 @@ $(document).ready(function () {
     //event handler for submit button
     $("#btnLogin").click(function (event) {
         event.preventDefault();
-        //collect userName and password entered by users
+        //collect Username and Password entered by user
         var userName = $("#uname").val();
         var password = $("#psw").val();
 
@@ -39,14 +38,16 @@ $(document).ready(function () {
 function userAuthenticate(userName, password) {
     var name;
     var role;
+    //Fetch the Login json file containing user details
     $.getJSON("../login.json", function(data){
 
         var $json = data;
 
         $.each($json,function(i,obj)
         {
-            if(obj.loginName === userName && obj.password === password)
+            if(obj.loginName === userName && obj.password === password) //Match the username and password from the file
             {
+                //Check if the user is Active in Login file
                 if (obj.status === 'active'){
                     checkval = true;
                     localStorage.setItem("login", JSON.stringify(obj));
@@ -68,7 +69,7 @@ function userAuthenticate(userName, password) {
         var login = localStorage.getItem("login");//Retrieve the stored data 
         login = JSON.parse(login); //Converts string to object
 
-        if (login != null)
+        if (login != null) //Check for Successfule Login
                 {
                     myFunction(name,role)
                 }
@@ -89,8 +90,8 @@ function userAuthenticate(userName, password) {
     document.getElementById("demo").innerHTML = `Welcome ${name}!!!`
     x.style.display = "block";
 
-   
-    if (role=="admin"){
+   //Check if the User is an admin
+    if (role === "admin"){
         $(".admin").css('display','block');
     }
     else {
